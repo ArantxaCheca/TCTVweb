@@ -1,0 +1,73 @@
+<form class="contact-form" action="#" method="POST">
+  <label for="nombre">Nombre completo</label>
+  <input type="text" id="nombre" name="nombre" required />
+
+  <label for="email">Correo electrónico</label>
+  <input type="email" id="email" name="email" required />
+
+  <label for="telefono">Teléfono</label>
+  <input type="tel" id="telefono" name="telefono" required />
+
+  <label for="tipo">Tipo de vehículo o maquinaria</label>
+  <select id="tipo" name="tipo" required>
+    <option value="">Selecciona una opción</option>
+    <option value="maquinaria-industrial">Maquinaria industrial</option>
+    <option value="vehiculo-industrial">Vehículo industrial</option>
+    <option value="camion">Camión</option>
+    <option value="furgoneta">Furgoneta</option>
+    <option value="turismo">Turismo</option>
+    <option value="otro">Otro</option>
+  </select>
+
+  <label for="mensaje">Cuéntanos qué quieres vender (marca, modelo, año)</label>
+  <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+  <button type="submit" class="btn btn-primary">Solicitar valoración</button>
+</form>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .contact-form label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #111;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: inherit;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus,
+  .contact-form select:focus {
+    outline: none;
+    border-color: #457b9d;
+    box-shadow: 0 0 0 2px rgba(69, 123, 157, 0.2);
+  }
+
+  .contact-form button[type="submit"] {
+    width: 100%;
+    text-align: center;
+    padding: 0.85rem;
+    font-size: 1rem;
+  }
+
+  @media (min-width: 769px) {
+    .contact-form button[type="submit"] {
+      width: auto;
+      align-self: flex-start;
+      padding: 0.85rem 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,246 @@
+---
+const currentPath = Astro.url.pathname;
+const links = [
+  { href: '/', label: 'Inicio' },
+  { href: '/servicios', label: 'Servicios' },
+  { href: '/sobre-nosotros', label: 'Sobre nosotros' },
+  { href: '/contacto', label: 'Contacto' },
+];
+---
+
+<header class="site-header" id="site-header">
+  <nav class="site-header__nav" aria-label="Navegación principal">
+    <div class="container site-header__inner">
+      <a href="/" class="site-header__logo" aria-label="Ir a la página principal">
+        Te Compramos Tu Vehículo
+      </a>
+      <ul class="site-header__links" id="nav-links">
+        {links.map(({ href, label }) => (
+          <li>
+            <a href={href} class:list={{ 'is-active': currentPath === href }}>
+              {label}
+            </a>
+          </li>
+        ))}
+        <li class="site-header__links-cta">
+          <a href="/contacto" class="btn btn-primary site-header__cta-mobile">Hablamos</a>
+        </li>
+      </ul>
+      <a href="/contacto" class="btn btn-primary site-header__cta">Hablamos</a>
+      <button class="site-header__hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  function onScroll() {
+    if (window.scrollY > 60) {
+      header.classList.add('is-scrolled');
+    } else {
+      header.classList.remove('is-scrolled');
+    }
+  }
+
+  function toggleMenu(open) {
+    const isOpen = open !== undefined ? open : hamburger.getAttribute('aria-expanded') === 'false';
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    navLinks.classList.toggle('is-open', isOpen);
+    document.body.classList.toggle('menu-open', isOpen);
+  }
+
+  hamburger.addEventListener('click', () => toggleMenu());
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => toggleMenu(false));
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!header.contains(e.target) && navLinks.classList.contains('is-open')) {
+      toggleMenu(false);
+    }
+  });
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .site-header__nav {
+    padding: 1rem 0;
+    transition: padding 0.3s ease;
+  }
+
+  .site-header.is-scrolled {
+    background-color: rgba(29, 53, 87, 0.95);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .site-header.is-scrolled .site-header__nav {
+    padding: 0.7rem 0;
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-header__logo {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .site-header__logo:hover {
+    text-decoration: none;
+  }
+
+  .site-header__links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    margin: 0 1.5rem;
+  }
+
+  .site-header__links a {
+    color: #f1f1f1;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .site-header__links a:hover,
+  .site-header__links a.is-active {
+    color: #e63946;
+    text-decoration: none;
+  }
+
+  .site-header__links-cta {
+    display: none;
+  }
+
+  .site-header__cta {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .site-header__hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1100;
+  }
+
+  .site-header__hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .site-header__hamburger[aria-expanded="true"] span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+
+  .site-header__hamburger[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-header__hamburger[aria-expanded="true"] span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+  }
+
+  @media (max-width: 900px) {
+    .site-header__links {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 280px;
+      height: 100vh;
+      flex-direction: column;
+      background: rgba(29, 53, 87, 0.98);
+      padding: 5rem 2rem 2rem;
+      margin: 0;
+      gap: 0;
+      transform: translateX(100%);
+      transition: transform 0.35s ease;
+      z-index: 1050;
+    }
+
+    .site-header__links.is-open {
+      transform: translateX(0);
+    }
+
+    .site-header__links li {
+      width: 100%;
+    }
+
+    .site-header__links a {
+      display: block;
+      padding: 0.9rem 0;
+      font-size: 1.1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .site-header__links-cta {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    .site-header__cta-mobile {
+      display: block;
+      text-align: center;
+      padding: 0.9rem;
+      font-size: 1rem;
+    }
+
+    .site-header__cta {
+      display: none;
+    }
+
+    .site-header__hamburger {
+      display: flex;
+    }
+
+    .site-header__nav {
+      padding: 0.8rem 0;
+    }
+
+    .site-header.is-scrolled .site-header__nav {
+      padding: 0.6rem 0;
+    }
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+</style>

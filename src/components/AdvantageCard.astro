@@ -1,0 +1,35 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<article class="advantage-card">
+  <h3>{title}</h3>
+  <p>{description}</p>
+</article>
+
+<style>
+  .advantage-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid #e63946;
+  }
+
+  .advantage-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: #1d3557;
+  }
+
+  .advantage-card p {
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.6;
+  }
+</style>

@@ -1,0 +1,51 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<MainLayout
+  title="Contacto | Vende tu Maquinaria o Vehículo | Te Compramos Tu Vehículo"
+  description="Contacta con Te Compramos Tu Vehículo para vender tu maquinaria industrial, camión, furgoneta o turismo. Solicita tu valoración gratuita sin compromiso."
+  canonical="/contacto"
+>
+  <section class="page-hero">
+    <div class="container">
+      <h1>Contacta para vender tu maquinaria o vehículo</h1>
+      <p>
+        ¿Tienes maquinaria industrial, un camión, una furgoneta o un turismo que quieras vender?
+        Cuéntanos qué tienes y te haremos una oferta en menos de 24 horas.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Solicita tu valoración gratuita</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p>
+            Rellena el formulario con los datos de tu maquinaria o vehículo y nos pondremos en
+            contacto contigo para hacerte una oferta firme y sin compromiso.
+          </p>
+
+          <h3>Datos de contacto</h3>
+          <ul>
+            <li><strong>Teléfono:</strong> <a href="tel:+34663452674" style="color:inherit;text-decoration:none">+34 663 45 26 74</a></li>
+            <li><strong>Email:</strong> <a href="mailto:Imperialcars2026@yahoo.com" style="color:inherit;text-decoration:none">Imperialcars2026@yahoo.com</a></li>
+            <li><strong>Horario:</strong> Lun–Vie 9:00–19:00</li>
+          </ul>
+
+          <h3 class="mt-3">¿Qué necesitas saber?</h3>
+          <ul class="list-check">
+            <li>Cuéntanos la marca, modelo y año de tu maquinaria o vehículo</li>
+            <li>Indícanos el estado general y el kilometraje si aplica</li>
+            <li>Recibirás una oferta firme en menos de 24 horas</li>
+            <li>El pago es inmediato y la gestión totalmente gratuita</li>
+            <li>No importa dónde estés, coordinamos la recogida</li>
+          </ul>
+        </div>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</MainLayout>

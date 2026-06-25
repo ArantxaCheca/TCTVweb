@@ -1,0 +1,492 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import CTA from '../components/CTA.astro';
+---
+
+<MainLayout
+  title="Servicios de compra de maquinaria industrial y vehículos para exportación"
+  description="Compramos maquinaria industrial, vehículos industriales, furgonetas, camiones y turismos en toda España. Valoración rápida, pago seguro, gestión documental y compra para exportación."
+  canonical="/servicios"
+>
+  <!-- 1. Hero -->
+  <section class="serv-hero" aria-label="Servicios de compra">
+    <div class="serv-hero__bg" style="background-image: url('/images/hero_servicios.jpeg')"></div>
+    <div class="serv-hero__overlay"></div>
+    <div class="serv-hero__content">
+      <h1>Servicios de compra de maquinaria industrial y vehículos</h1>
+      <p class="serv-hero__subtitle">
+        Te ayudamos a vender maquinaria industrial, vehículos industriales, furgonetas, camiones y turismos con valoración rápida, pago seguro y gestión completa.
+      </p>
+      <a href="/contacto" class="btn btn-primary serv-hero__btn">Solicita tu oferta ahora</a>
+    </div>
+  </section>
+
+  <!-- 2. Cómo te ayudamos a vender -->
+  <section aria-label="Cómo te ayudamos a vender">
+    <div class="container">
+      <h2 class="section-title">Cómo te ayudamos a vender</h2>
+      <p class="serv-section__intro">
+        Ofrecemos un servicio integral para que puedas vender tu maquinaria o vehículo de forma sencilla, segura y sin complicaciones.
+      </p>
+      <div class="help-grid">
+        <article class="help-card">
+          <div class="help-card__img">
+            <img src="/images/pexels-deyler-rivera-segura-1300296248-29506742.jpg.jpeg" alt="Especialistas en valoración de maquinaria industrial y vehículos" loading="lazy" />
+          </div>
+          <div class="help-card__body">
+            <h3>Valoración gratuita</h3>
+            <p>Analizamos tu maquinaria o vehículo y te ofrecemos una valoración clara y sin compromiso.</p>
+          </div>
+        </article>
+        <article class="help-card">
+          <div class="help-card__img">
+            <img src="/images/pexels-bylukemiller-29566901.jpg.jpeg" alt="Gestión profesional de documentación para compraventa de vehículos" loading="lazy" />
+          </div>
+          <div class="help-card__body">
+            <h3>Gestión de documentación</h3>
+            <p>Nos encargamos de los trámites necesarios para que la compraventa sea ágil y segura.</p>
+          </div>
+        </article>
+        <article class="help-card">
+          <div class="help-card__img">
+            <img src="/images/pexels-rockwell-branding-agency-85164430-8910354.jpg.jpeg" alt="Pago seguro en compra de vehículos para exportación internacional" loading="lazy" />
+          </div>
+          <div class="help-card__body">
+            <h3>Pago rápido y seguro</h3>
+            <p>Realizamos el pago de forma segura para que puedas cerrar la operación con tranquilidad.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Nuestros servicios de compra -->
+  <section class="bg-light" aria-label="Nuestros servicios de compra">
+    <div class="container">
+      <h2 class="section-title">Nuestros servicios de compra</h2>
+      <div class="serv-grid">
+        <article class="serv-card serv-card--featured">
+          <div class="serv-card__img">
+            <img src="/images/compra_maq_ind.jpeg" alt="Compra de maquinaria industrial para exportación" loading="lazy" />
+          </div>
+          <div class="serv-card__body">
+            <h3>Compra de maquinaria industrial</h3>
+            <p>Compramos maquinaria industrial, equipos de construcción, maquinaria pesada y activos industriales para exportación.</p>
+            <a href="/contacto" class="serv-card__link">Solicitar valoración →</a>
+          </div>
+        </article>
+
+        <article class="serv-card">
+          <div class="serv-card__img">
+            <img src="/images/trailer.jpeg" alt="Compra de vehículos industriales para exportación" loading="lazy" style="object-position: 55% 60%;" />
+          </div>
+          <div class="serv-card__body">
+            <h3>Compra de vehículos industriales</h3>
+            <p>Adquirimos camiones, vehículos comerciales, flotas y otros vehículos industriales.</p>
+            <a href="/contacto" class="serv-card__link">Ver más →</a>
+          </div>
+        </article>
+
+        <article class="serv-card">
+          <div class="serv-card__img">
+            <img src="/images/furgo.jpeg" alt="Compra de furgonetas y vehículos comerciales para exportación" loading="lazy" />
+          </div>
+          <div class="serv-card__body">
+            <h3>Compra de furgonetas y camiones</h3>
+            <p>Compramos furgonetas, camiones ligeros, vehículos isotérmicos y comerciales.</p>
+            <a href="/contacto" class="serv-card__link">Ver más →</a>
+          </div>
+        </article>
+
+        <article class="serv-card">
+          <div class="serv-card__img">
+            <img src="/images/coche.jpeg" alt="Compra de turismos de cualquier marca y modelo" loading="lazy" />
+          </div>
+          <div class="serv-card__body">
+            <h3>Compra de turismos</h3>
+            <p>También compramos coches particulares de diferentes marcas y modelos.</p>
+            <a href="/contacto" class="serv-card__link">Ver más →</a>
+          </div>
+        </article>
+
+        <article class="serv-card">
+          <div class="serv-card__img">
+            <img src="/images/export.jpeg" alt="Compra de maquinaria y vehículos para exportación internacional" loading="lazy" />
+          </div>
+          <div class="serv-card__body">
+            <h3>Compra para exportación</h3>
+            <p>Trabajamos con mercados internacionales para ofrecer soluciones competitivas a propietarios y empresas.</p>
+            <a href="/contacto" class="serv-card__link">Saber más →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Especialistas en compra para exportación -->
+  <section class="serv-export" aria-label="Compra para exportación">
+    <div class="container serv-export__inner">
+      <h2>Especialistas en compra para exportación</h2>
+      <p>
+        Nuestra experiencia en mercados internacionales nos permite valorar maquinaria y vehículos con una visión más amplia que otros compradores locales. Esto nos ayuda a ofrecer soluciones competitivas y ágiles para particulares, autónomos y empresas.
+      </p>
+      <a href="/contacto" class="btn btn-primary">Solicita valoración</a>
+    </div>
+  </section>
+
+  <!-- 5. Por qué elegirnos -->
+  <section aria-label="Por qué elegirnos">
+    <div class="container serv-why__grid">
+      <div class="serv-why__image">
+        <img src="/images/WhatsApp Image 2026-06-25 at 09.57.39.jpeg" alt="Expertos en compra de maquinaria industrial y vehículos para exportación" loading="lazy" />
+      </div>
+      <div class="serv-why__content">
+        <h2>Por qué elegirnos</h2>
+        <ul class="serv-why__list">
+          <li><strong>Especialización en maquinaria industrial:</strong> Somos compradores expertos en maquinaria industrial y vehículos de todo tipo.</li>
+          <li><strong>Compra de vehículos para exportación:</strong> Accedemos a mercados globales para ofrecerte el mejor precio.</li>
+          <li><strong>Valoraciones claras:</strong> Te explicamos cómo tasamos cada máquina o vehículo, sin sorpresas.</li>
+          <li><strong>Pago seguro:</strong> Cobras al instante, sin esperas ni aplazamientos.</li>
+          <li><strong>Gestión completa:</strong> Nos encargamos de toda la documentación y trámites.</li>
+          <li><strong>Trato profesional:</strong> Te acompañamos en todo el proceso con atención personalizada.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CTA final -->
+  <CTA
+    heading="¿Quieres vender tu maquinaria o vehículo?"
+    text="Solicita una valoración sin compromiso y recibe una oferta adaptada a tu caso."
+    label="Solicita tu oferta ahora"
+    href="/contacto"
+  />
+</MainLayout>
+
+<style>
+  /* ==============================
+     HERO
+  ============================== */
+  .serv-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+  .serv-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center 60%;
+    background-repeat: no-repeat;
+  }
+  .serv-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.55) 38%, rgba(0,0,0,.25) 70%, rgba(0,0,0,.15) 100%);
+  }
+  .serv-hero__content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    max-width: 900px;
+    width: 72%;
+    padding: 2rem 1.5rem;
+    padding-left: clamp(2rem, 5vw, 4rem);
+  }
+  .serv-hero__content h1 {
+    font-size: clamp(2.6rem, 4vw, 4.2rem);
+    color: #fff;
+    margin-bottom: 1.25rem;
+    line-height: 1.08;
+    font-weight: 800;
+  }
+  .serv-hero__subtitle {
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
+    line-height: 1.55;
+    opacity: .9;
+    margin-bottom: 2rem;
+    max-width: 750px;
+  }
+  .serv-hero__btn {
+    font-size: 1.1rem;
+    padding: 18px 48px;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+  }
+
+  /* ==============================
+     SECTION INTRO
+  ============================== */
+  .serv-section__intro {
+    text-align: center;
+    max-width: 750px;
+    margin: -1.5rem auto 2.5rem;
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* ==============================
+     HELP CARDS
+  ============================== */
+  .help-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .help-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .help-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  }
+  .help-card__img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  .help-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+  }
+  .help-card:hover .help-card__img img {
+    transform: scale(1.08);
+  }
+  .help-card__body {
+    padding: 1.5rem;
+  }
+  .help-card__body h3 {
+    font-size: 1.1rem;
+    color: #1d3557;
+    margin-bottom: .5rem;
+  }
+  .help-card__body p {
+    font-size: .9rem;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  /* ==============================
+     SERVICES GRID
+  ============================== */
+  .serv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .serv-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .serv-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  }
+  .serv-card--featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .serv-card__img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  .serv-card--featured .serv-card__img {
+    height: 100%;
+    min-height: 280px;
+  }
+  .serv-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+  }
+  .serv-card:hover .serv-card__img img {
+    transform: scale(1.05);
+  }
+  .serv-card__body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .serv-card__body h3 {
+    font-size: 1.15rem;
+    color: #1d3557;
+    margin-bottom: .5rem;
+  }
+  .serv-card__body p {
+    font-size: .9rem;
+    color: #555;
+    line-height: 1.6;
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+  .serv-card__link {
+    font-size: .9rem;
+    font-weight: 600;
+    color: #e63946;
+  }
+
+  /* ==============================
+     EXPORT SECTION
+  ============================== */
+  .serv-export {
+    background: linear-gradient(135deg, #1d3557, #457b9d);
+    color: #fff;
+    text-align: center;
+  }
+  .serv-export__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    max-width: 800px;
+  }
+  .serv-export h2 {
+    font-size: 2rem;
+    color: #fff;
+  }
+  .serv-export p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    opacity: .9;
+  }
+
+  /* ==============================
+     WHY SECTION
+  ============================== */
+  .serv-why__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .serv-why__image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.1);
+  }
+  .serv-why__content h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #111;
+  }
+  .serv-why__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .serv-why__list li {
+    padding: .75rem 0;
+    padding-left: 1.75rem;
+    position: relative;
+    font-size: .95rem;
+    color: #333;
+    line-height: 1.6;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .serv-why__list li:last-child {
+    border-bottom: none;
+  }
+  .serv-why__list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #e63946;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  /* ==============================
+     RESPONSIVE
+  ============================== */
+  @media (max-width: 1024px) {
+    .serv-hero__content {
+      width: 85%;
+    }
+    .help-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .serv-card--featured {
+      grid-template-columns: 1fr;
+    }
+    .serv-why__grid {
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .serv-hero {
+      min-height: 55vh;
+    }
+    .serv-hero__content {
+      width: 100%;
+      padding-inline: 1.25rem;
+    }
+    .serv-hero__content h1 {
+      font-size: clamp(2rem, 8vw, 2.8rem);
+    }
+    .serv-hero__subtitle {
+      font-size: 1rem;
+    }
+    .serv-hero__btn {
+      max-width: 360px;
+    }
+    .help-grid {
+      grid-template-columns: 1fr;
+    }
+    .help-card__img {
+      height: 180px;
+    }
+    .serv-grid {
+      grid-template-columns: 1fr;
+    }
+    .serv-card__img {
+      height: 180px;
+    }
+    .serv-card--featured .serv-card__img {
+      min-height: 200px;
+    }
+    .serv-export h2 {
+      font-size: 1.6rem;
+    }
+    .serv-why__grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .serv-why__image {
+      order: -1;
+    }
+    .serv-why__content h2 {
+      font-size: 1.6rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .serv-hero__btn {
+      font-size: 1rem;
+      padding: 16px 36px;
+      max-width: none;
+    }
+
+    .serv-hero__content h1 {
+      font-size: clamp(1.8rem, 9vw, 2.4rem);
+    }
+  }
+</style>
