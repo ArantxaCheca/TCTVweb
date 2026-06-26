@@ -12,6 +12,7 @@ const links = [
   <nav class="site-header__nav" aria-label="Navegación principal">
     <div class="container site-header__inner">
       <a href="/" class="site-header__logo" aria-label="Ir a la página principal">
+        <img src="/images/TCTV.png" alt="" class="site-header__logo-img" />
         Te Compramos Tu Vehículo
       </a>
       <ul class="site-header__links" id="nav-links">
@@ -73,6 +74,13 @@ const links = [
 </script>
 
 <style>
+  @font-face {
+    font-family: 'Outfit';
+    src: url('/images/fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-display: swap;
+  }
+
   .site-header {
     position: fixed;
     top: 0;
@@ -106,7 +114,17 @@ const links = [
     color: #fff;
     font-size: 1.2rem;
     font-weight: 700;
+    font-family: 'Outfit', sans-serif;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .site-header__logo-img {
+    height: 1.4rem;
+    width: auto;
+    display: block;
   }
 
   .site-header__logo:hover {
