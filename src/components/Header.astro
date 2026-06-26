@@ -116,15 +116,15 @@ const links = [
   .site-header__links {
     display: flex;
     list-style: none;
-    gap: 1.5rem;
-    margin: 0 1.5rem;
+    gap: 2.25rem;
+    margin: 0 2rem 0 1.5rem;
   }
 
   .site-header__links a {
     color: #f1f1f1;
-    font-size: 0.95rem;
+    font-size: 1.125rem;
     font-weight: 500;
-    transition: color 0.2s ease;
+    transition: color 0.3s ease;
   }
 
   .site-header__links a:hover,
@@ -138,10 +138,16 @@ const links = [
   }
 
   .site-header__cta {
-    padding: 0.6rem 1.5rem;
-    font-size: 0.9rem;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
     white-space: nowrap;
     flex-shrink: 0;
+  }
+
+  .site-header.is-scrolled .site-header__cta {
+    background-color: #b71c1c;
   }
 
   .site-header__hamburger {
