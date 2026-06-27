@@ -1,4 +1,8 @@
-<form class="contact-form" action="#" method="POST">
+<form class="contact-form" id="contact-form-element" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="TU_ACCESS_KEY_DE_WEB3FORMS">
+  <input type="hidden" name="subject" value="Nueva solicitud de valoración desde la web">
+  <input type="hidden" name="from_name" value="Formulario TCTV">
+
   <label for="nombre">Nombre completo</label>
   <input type="text" id="nombre" name="nombre" required />
 
@@ -20,22 +24,90 @@
   </select>
 
   <label for="mensaje">Cuéntanos qué quieres vender (marca, modelo, año)</label>
-  <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+  <textarea id="mensaje" name="mensaje" rows="3" required></textarea>
 
-  <button type="submit" class="btn btn-primary">Solicitar valoración</button>
+  <p class="form-trust">Tus datos solo se utilizarán para elaborar tu valoración. Nunca los compartiremos con terceros.</p>
+
+  <div id="form-result" class="form-result" style="display:none;" role="alert"></div>
+
+  <button type="submit" class="btn btn-primary">Quiero mi valoración gratuita</button>
 </form>
+
+<script>
+  (function() {
+    var form = document.getElementById('contact-form-element');
+    var result = document.getElementById('form-result');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      var nombre = document.getElementById('nombre').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var telefono = document.getElementById('telefono').value.trim();
+      var tipo = document.getElementById('tipo').value;
+      var mensaje = document.getElementById('mensaje').value.trim();
+
+      if (!nombre || !email || !telefono || !tipo || !mensaje) {
+        result.textContent = 'Todos los campos son obligatorios.';
+        result.className = 'form-result form-result--error';
+        result.style.display = 'block';
+        return;
+      }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        result.textContent = 'Introduce un correo electrónico válido.';
+        result.className = 'form-result form-result--error';
+        result.style.display = 'block';
+        return;
+      }
+
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      try {
+        var response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(form)
+        });
+
+        var data = await response.json();
+
+        if (data.success) {
+          result.textContent = 'Gracias. Hemos recibido tu solicitud y nos pondremos en contacto contigo lo antes posible.';
+          result.className = 'form-result form-result--success';
+          result.style.display = 'block';
+          form.reset();
+        } else {
+          result.textContent = 'No se ha podido enviar el formulario. Revisa los datos o inténtalo de nuevo.';
+          result.className = 'form-result form-result--error';
+          result.style.display = 'block';
+        }
+      } catch (error) {
+        result.textContent = 'No se ha podido enviar el formulario. Revisa los datos o inténtalo de nuevo.';
+        result.className = 'form-result form-result--error';
+        result.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Quiero mi valoración gratuita';
+      }
+    });
+  })();
+</script>
 
 <style>
   .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
+    margin-top: 22px;
   }
 
   .contact-form label {
     font-size: 0.9rem;
     font-weight: 600;
     color: #111;
+    margin-bottom: 2px;
   }
 
   .contact-form input,
@@ -61,13 +133,52 @@
     text-align: center;
     padding: 0.85rem;
     font-size: 1rem;
+    background-color: var(--color-red);
+    border-color: var(--color-red);
+  }
+  .contact-form button[type="submit"]:hover {
+    background-color: var(--color-red-hover);
+    border-color: var(--color-red-hover);
   }
 
-  @media (min-width: 769px) {
+  .form-trust {
+    font-size: 0.78rem;
+    color: #888;
+    margin: 0.25rem 0 12px 0;
+    line-height: 1.4;
+  }
+
+  .form-result {
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 8px 0;
+  }
+  .form-result--success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  .form-result--error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+
+  @media (max-width: 480px) {
+    .contact-form label {
+      font-size: 0.85rem;
+    }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      padding: 0.6rem 0.7rem;
+      font-size: 0.9rem;
+    }
     .contact-form button[type="submit"] {
-      width: auto;
-      align-self: flex-start;
-      padding: 0.85rem 2rem;
+      padding: 0.8rem;
+      font-size: 0.95rem;
     }
   }
 </style>

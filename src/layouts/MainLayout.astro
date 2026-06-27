@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import '../styles/global.css';
 
 export interface Props {
   title: string;
@@ -66,7 +67,10 @@ const organizationSchema = {
     <!-- Schema.org -->
     <script type="application/ld+json" set:html={JSON.stringify(schema || organizationSchema)}></script>
 
-    <link rel="stylesheet" href="/src/styles/global.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
   </head>
   <body>
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
@@ -84,7 +88,7 @@ const organizationSchema = {
         position: absolute;
         top: -9999px;
         left: 0;
-        background: #e63946;
+        background: var(--color-primary);
         color: #fff;
         padding: 0.5rem 1rem;
         font-weight: 600;

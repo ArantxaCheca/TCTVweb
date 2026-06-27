@@ -13,11 +13,11 @@ import CTA from '../components/CTA.astro';
     <div class="serv-hero__bg" style="background-image: url('/images/hero_servicios.jpeg')"></div>
     <div class="serv-hero__overlay"></div>
     <div class="serv-hero__content">
-      <h1>Servicios de compra de maquinaria industrial y vehículos</h1>
+      <h1>Valoración y compra de maquinaria industrial y vehículos</h1>
       <p class="serv-hero__subtitle">
         Te ayudamos a vender maquinaria industrial, vehículos industriales, furgonetas, camiones y turismos con valoración rápida, pago seguro y gestión completa.
       </p>
-      <a href="/contacto" class="btn btn-primary serv-hero__btn">Solicita tu oferta ahora</a>
+      <a href="/contacto" class="btn btn-primary serv-hero__btn">Quiero vender mi vehículo</a>
     </div>
   </section>
 
@@ -155,12 +155,14 @@ import CTA from '../components/CTA.astro';
   </section>
 
   <!-- 6. CTA final -->
-  <CTA
-    heading="¿Quieres vender tu maquinaria o vehículo?"
-    text="Solicita una valoración sin compromiso y recibe una oferta adaptada a tu caso."
-    label="Solicita tu oferta ahora"
-    href="/contacto"
-  />
+  <section class="cta-final" aria-label="¿Quieres vender?">
+    <div class="container cta-final__inner">
+      <h2>¿Quieres vender tu maquinaria o vehículo?</h2>
+      <p class="cta-final__sub">Solicita una valoración gratuita y sin compromiso. Nuestro equipo revisará tu maquinaria o vehículo y se pondrá en contacto contigo para ofrecerte una propuesta personalizada.</p>
+      <a href="/contacto" class="btn btn-primary cta-final__btn">Quiero mi valoración gratuita</a>
+      <p class="cta-final__trust">&#10003; Valoración gratuita &nbsp;&bull;&nbsp; Sin compromiso &nbsp;&bull;&nbsp; Gestión documental incluida</p>
+    </div>
+  </section>
 </MainLayout>
 
 <style>
@@ -169,7 +171,7 @@ import CTA from '../components/CTA.astro';
   ============================== */
   .serv-hero {
     position: relative;
-    min-height: 60vh;
+    min-height: 52vh;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -193,13 +195,13 @@ import CTA from '../components/CTA.astro';
     color: #fff;
     max-width: 900px;
     width: 72%;
-    padding: 2rem 1.5rem;
+    padding: 10rem 1.5rem 0.5rem;
     padding-left: clamp(2rem, 5vw, 4rem);
   }
   .serv-hero__content h1 {
-    font-size: clamp(2.6rem, 4vw, 4.2rem);
+    font-size: clamp(2.55rem, 4vw, 3.5rem);
     color: #fff;
-    margin-bottom: 1.25rem;
+    margin-bottom: 2rem;
     line-height: 1.08;
     font-weight: 800;
   }
@@ -208,7 +210,7 @@ import CTA from '../components/CTA.astro';
     line-height: 1.55;
     opacity: .9;
     margin-bottom: 2rem;
-    max-width: 750px;
+    max-width: 680px;
   }
   .serv-hero__btn {
     font-size: 1.1rem;
@@ -303,7 +305,7 @@ import CTA from '../components/CTA.astro';
   }
   .serv-card__img {
     width: 100%;
-    height: 200px;
+    height: 240px;
     overflow: hidden;
   }
   .serv-card--featured .serv-card__img {
@@ -339,7 +341,7 @@ import CTA from '../components/CTA.astro';
   .serv-card__link {
     font-size: .9rem;
     font-weight: 600;
-    color: #e63946;
+    color: #1E5EFF;
   }
 
   /* ==============================
@@ -365,6 +367,12 @@ import CTA from '../components/CTA.astro';
     font-size: 1.05rem;
     line-height: 1.7;
     opacity: .9;
+  }
+  .serv-export .btn-primary {
+    background-color: var(--color-red);
+  }
+  .serv-export .btn-primary:hover {
+    background-color: var(--color-red-hover);
   }
 
   /* ==============================
@@ -408,7 +416,7 @@ import CTA from '../components/CTA.astro';
     content: "✓";
     position: absolute;
     left: 0;
-    color: #e63946;
+    color: #1E5EFF;
     font-weight: 700;
     font-size: 1.1rem;
   }
@@ -433,14 +441,14 @@ import CTA from '../components/CTA.astro';
 
   @media (max-width: 768px) {
     .serv-hero {
-      min-height: 55vh;
+      min-height: 48vh;
     }
     .serv-hero__content {
       width: 100%;
       padding-inline: 1.25rem;
     }
     .serv-hero__content h1 {
-      font-size: clamp(2rem, 8vw, 2.8rem);
+      font-size: clamp(1.6rem, 6vw, 2.2rem);
     }
     .serv-hero__subtitle {
       font-size: 1rem;
@@ -486,7 +494,7 @@ import CTA from '../components/CTA.astro';
     }
 
     .serv-hero__content h1 {
-      font-size: clamp(1.8rem, 9vw, 2.4rem);
+      font-size: clamp(1.4rem, 7vw, 1.85rem);
     }
   }
 </style>
