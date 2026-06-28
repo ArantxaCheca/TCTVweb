@@ -1,8 +1,4 @@
-<form class="contact-form" id="contact-form-element" action="https://api.web3forms.com/submit" method="POST">
-  <input type="hidden" name="access_key" value="TU_ACCESS_KEY_DE_WEB3FORMS">
-  <input type="hidden" name="subject" value="Nueva solicitud de valoración desde la web">
-  <input type="hidden" name="from_name" value="Formulario TCTV">
-
+<form class="contact-form" id="contact-form-element">
   <label for="nombre">Nombre completo</label>
   <input type="text" id="nombre" name="nombre" required />
 
@@ -34,18 +30,18 @@
 </form>
 
 <script>
-  (function() {
-    var form = document.getElementById('contact-form-element');
-    var result = document.getElementById('form-result');
+  const form = document.getElementById('contact-form-element');
+  const result = document.getElementById('form-result');
 
-    form.addEventListener('submit', async function(e) {
+  if (form && result) {
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      var nombre = document.getElementById('nombre').value.trim();
-      var email = document.getElementById('email').value.trim();
-      var telefono = document.getElementById('telefono').value.trim();
-      var tipo = document.getElementById('tipo').value;
-      var mensaje = document.getElementById('mensaje').value.trim();
+      const nombre = document.getElementById('nombre')?.value.trim();
+      const email = document.getElementById('email')?.value.trim();
+      const telefono = document.getElementById('telefono')?.value.trim();
+      const tipo = document.getElementById('tipo')?.value;
+      const mensaje = document.getElementById('mensaje')?.value.trim();
 
       if (!nombre || !email || !telefono || !tipo || !mensaje) {
         result.textContent = 'Todos los campos son obligatorios.';
@@ -54,37 +50,44 @@
         return;
       }
 
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        result.textContent = 'Introduce un correo electrónico válido.';
-        result.className = 'form-result form-result--error';
-        result.style.display = 'block';
-        return;
-      }
+      const btn = form.querySelector('button[type="submit"]');
+      if (!btn) return;
 
-      var btn = form.querySelector('button[type="submit"]');
       btn.disabled = true;
       btn.textContent = 'Enviando...';
 
       try {
-        var response = await fetch('https://api.web3forms.com/submit', {
+        const response = await fetch('/api/contacto', {
           method: 'POST',
-          body: new FormData(form)
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            nombre,
+            email,
+            telefono,
+            tipo_vehiculo: tipo,
+            vehiculo_descripcion: mensaje,
+          }),
         });
 
-        var data = await response.json();
+        const data = await response.json();
 
-        if (data.success) {
+        if (response.ok) {
           result.textContent = 'Gracias. Hemos recibido tu solicitud y nos pondremos en contacto contigo lo antes posible.';
           result.className = 'form-result form-result--success';
           result.style.display = 'block';
           form.reset();
+          setTimeout(() => {
+          result.style.display = 'none';
+          }, 5000);
         } else {
-          result.textContent = 'No se ha podido enviar el formulario. Revisa los datos o inténtalo de nuevo.';
+          result.textContent = data.error || 'No se ha podido enviar el formulario.';
           result.className = 'form-result form-result--error';
           result.style.display = 'block';
         }
       } catch (error) {
-        result.textContent = 'No se ha podido enviar el formulario. Revisa los datos o inténtalo de nuevo.';
+        result.textContent = 'No se ha podido enviar el formulario. Inténtalo de nuevo.';
         result.className = 'form-result form-result--error';
         result.style.display = 'block';
       } finally {
@@ -92,7 +95,7 @@
         btn.textContent = 'Quiero mi valoración gratuita';
       }
     });
-  })();
+  }
 </script>
 
 <style>
@@ -136,6 +139,7 @@
     background-color: var(--color-red);
     border-color: var(--color-red);
   }
+
   .contact-form button[type="submit"]:hover {
     background-color: var(--color-red-hover);
     border-color: var(--color-red-hover);
@@ -155,11 +159,13 @@
     line-height: 1.5;
     margin: 8px 0;
   }
+
   .form-result--success {
     background-color: #d4edda;
     color: #155724;
     border: 1px solid #c3e6cb;
   }
+
   .form-result--error {
     background-color: #f8d7da;
     color: #721c24;
@@ -170,12 +176,14 @@
     .contact-form label {
       font-size: 0.85rem;
     }
+
     .contact-form input,
     .contact-form textarea,
     .contact-form select {
       padding: 0.6rem 0.7rem;
       font-size: 0.9rem;
     }
+
     .contact-form button[type="submit"] {
       padding: 0.8rem;
       font-size: 0.95rem;
