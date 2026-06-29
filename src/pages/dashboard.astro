@@ -33,7 +33,101 @@ if (!autenticado) {
       </p>
     </div>
   </section>
+
+  <section class="content-section bg-light">
+    <div class="container">
+      <h2 class="section-title">Cambiar contraseña</h2>
+      <div class="password-card">
+        <form id="password-form" class="password-form" novalidate>
+          <div class="form-group">
+            <label for="email">Email del administrador</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="currentPassword">Contraseña actual</label>
+            <input type="password" id="currentPassword" name="currentPassword" required autocomplete="current-password" />
+          </div>
+          <div class="form-group">
+            <label for="newPassword">Nueva contraseña</label>
+            <input type="password" id="newPassword" name="newPassword" required minlength="8" autocomplete="new-password" />
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Repetir nueva contraseña</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required minlength="8" autocomplete="new-password" />
+          </div>
+          <p id="password-error" class="password-error" aria-live="polite"></p>
+          <p id="password-success" class="password-success" aria-live="polite"></p>
+          <button type="submit" class="btn btn-primary password-btn" id="password-btn">Actualizar contraseña</button>
+        </form>
+      </div>
+    </div>
+  </section>
 </MainLayout>
+
+<script>
+  const form = document.getElementById('password-form');
+  const errorEl = document.getElementById('password-error');
+  const successEl = document.getElementById('password-success');
+  const btn = document.getElementById('password-btn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.textContent = '';
+    successEl.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Actualizando…';
+
+    const formData = new FormData(form);
+    const newPassword = formData.get('newPassword');
+    const confirmPassword = formData.get('confirmPassword');
+
+    if (newPassword.length < 8) {
+      errorEl.textContent = 'La nueva contraseña debe tener al menos 8 caracteres.';
+      btn.disabled = false;
+      btn.textContent = 'Actualizar contraseña';
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      errorEl.textContent = 'Las nuevas contraseñas no coinciden.';
+      btn.disabled = false;
+      btn.textContent = 'Actualizar contraseña';
+      return;
+    }
+
+    const body = JSON.stringify({
+      email: formData.get('email'),
+      currentPassword: formData.get('currentPassword'),
+      newPassword,
+      confirmPassword,
+    });
+
+    try {
+      const res = await fetch('/api/change-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body,
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        errorEl.textContent = data.error || 'Error al actualizar la contraseña.';
+        btn.disabled = false;
+        btn.textContent = 'Actualizar contraseña';
+        return;
+      }
+
+      successEl.textContent = 'Contraseña actualizada correctamente.';
+      form.reset();
+    } catch {
+      errorEl.textContent = 'Error de conexión. Inténtalo de nuevo.';
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'Actualizar contraseña';
+  });
+</script>
 
 <style>
   .dashboard-desc {
@@ -70,5 +164,73 @@ if (!autenticado) {
 
   .dashboard-logout a:hover {
     color: var(--color-red);
+  }
+
+  .password-card {
+    max-width: 480px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .password-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .password-form .form-group label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #1d3557;
+  }
+
+  .password-form .form-group input {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-family: inherit;
+  }
+
+  .password-form .form-group input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(30, 94, 255, 0.15);
+  }
+
+  .password-error {
+    color: var(--color-red);
+    font-size: 0.9rem;
+    min-height: 1.3em;
+  }
+
+  .password-success {
+    color: #16a34a;
+    font-size: 0.95rem;
+    font-weight: 600;
+    min-height: 1.3em;
+  }
+
+  .password-btn {
+    width: 100%;
+    padding: 0.85rem;
+    font-size: 1.05rem;
+    text-align: center;
+  }
+
+  .password-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
   }
 </style>
