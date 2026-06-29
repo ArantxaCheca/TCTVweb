@@ -9,13 +9,15 @@ import CTA from '../components/CTA.astro';
   canonical="/sobre-nosotros"
 >
   <!-- 1. Hero -->
-  <section class="page-hero">
-    <div class="container">
-      <h1>Sobre Te Compramos Tu Vehículo</h1>
-      <p>
+  <section class="page-hero" aria-label="Sobre nosotros">
+    <div class="page-hero__bg" style="background-image: url('/images/sobre-nosotros-hero.png')"></div>
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content">
+      <h1>¿Quiénes somos?</h1>
+      <p class="page-hero__subtitle">
         Somos una empresa especializada en la compra de maquinaria industrial, vehículos industriales, furgonetas, camiones y turismos para exportación.
       </p>
-      <a href="/contacto" class="btn btn-primary page-hero__btn">Solicita tu valoración</a>
+      <a href="/contacto" class="btn btn-primary page-hero__btn">Valora tu vehículo con nosotros</a>
     </div>
   </section>
 
@@ -44,21 +46,21 @@ import CTA from '../components/CTA.astro';
       <div class="about-diff">
         <article class="about-diff__card">
           <div class="about-diff__icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
           </div>
           <h3>Especialización en exportación</h3>
           <p>Accedemos a mercados internacionales para ofrecerte precios más competitivos que cualquier comprador local.</p>
         </article>
         <article class="about-diff__card">
           <div class="about-diff__icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           </div>
           <h3>Valoraciones claras</h3>
           <p>Te explicamos cómo tasamos cada máquina o vehículo. Sin sorpresas ni comisiones ocultas.</p>
         </article>
         <article class="about-diff__card">
           <div class="about-diff__icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
           </div>
           <h3>Gestión completa</h3>
           <p>Nos encargamos de toda la documentación y trámites para que puedas vender sin preocuparte de nada.</p>
@@ -112,23 +114,137 @@ import CTA from '../components/CTA.astro';
     </div>
   </section>
 
-  <!-- 6. Frase de confianza -->
-  <section class="about-quote" aria-label="Frase de confianza">
-    <div class="container about-quote__inner">
-      <p>Nuestro objetivo es que vender tu maquinaria o vehículo sea un proceso claro, seguro y sin complicaciones.</p>
+  <!-- 6. Nuestro objetivo -->
+  <section class="about-goal" aria-label="Nuestro objetivo">
+    <div class="about-goal__inner">
+      <span class="about-goal__label">NUESTRO OBJETIVO</span>
+      <h2 class="about-goal__title">Nuestro objetivo es que vender tu maquinaria o vehículo sea un proceso claro, seguro y sin complicaciones.</h2>
+      <div class="about-goal__benefits">
+        <div class="about-goal__benefit">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <strong>Valoración gratuita</strong>
+          <span>Sin ningún compromiso.</span>
+        </div>
+        <div class="about-goal__benefit">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <strong>Pago inmediato</strong>
+          <span>Cobro rápido y seguro.</span>
+        </div>
+        <div class="about-goal__benefit">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          <strong>Gestión completa</strong>
+          <span>Nos encargamos de toda la documentación.</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- 7. CTA final -->
-  <CTA
-    heading="¿Quieres vender tu maquinaria o vehículo?"
-    text="Solicita una valoración sin compromiso y recibe una oferta adaptada a tu caso."
-    label="Solicita tu valoración"
-    href="/contacto"
-  />
+  <section class="cta-final" aria-label="¿Quieres vender?">
+    <div class="container cta-final__inner">
+      <h2>¿Quieres vender tu maquinaria o vehículo?</h2>
+      <p class="cta-final__sub">Solicita una valoración gratuita y sin compromiso. Nuestro equipo revisará tu maquinaria o vehículo y se pondrá en contacto contigo para ofrecerte una propuesta personalizada.</p>
+      <a href="/contacto" class="btn btn-primary cta-final__btn">Quiero mi valoración gratuita</a>
+      <p class="cta-final__trust">&#10003; Valoración gratuita &nbsp;&bull;&nbsp; Sin compromiso &nbsp;&bull;&nbsp; Gestión documental incluida</p>
+    </div>
+  </section>
 </MainLayout>
 
 <style>
+  /* ==============================
+     HERO
+  ============================== */
+  .page-hero {
+    position: relative;
+    min-height: 52vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+  .page-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center 20%;
+    background-repeat: no-repeat;
+  }
+  .page-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.55) 38%, rgba(0,0,0,.25) 70%, rgba(0,0,0,.15) 100%);
+  }
+  .page-hero__content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    max-width: 900px;
+    width: 72%;
+    padding: 10rem 1.5rem 0.5rem;
+    padding-left: clamp(2rem, 5vw, 4rem);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .page-hero__content h1 {
+    font-size: clamp(2.55rem, 4vw, 3.5rem);
+    color: #fff;
+    margin: 0 0 2rem 0;
+    line-height: 1.08;
+    font-weight: 800;
+  }
+  .page-hero__subtitle {
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
+    line-height: 1.55;
+    opacity: .9;
+    margin: 0 0 2rem 0;
+    max-width: 680px;
+  }
+  .page-hero__btn {
+    font-size: 1.1rem;
+    padding: 12px 48px;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+  }
+
+  @media (max-width: 1024px) {
+    .page-hero__content {
+      width: 85%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      min-height: 48vh;
+    }
+    .page-hero__content {
+      width: 100%;
+      padding-inline: 1.25rem;
+    }
+    .page-hero__content h1 {
+      font-size: clamp(1.6rem, 6vw, 2.2rem);
+    }
+    .page-hero__subtitle {
+      font-size: 1rem;
+    }
+    .page-hero__btn {
+      max-width: 360px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-hero__btn {
+      font-size: 1rem;
+      padding: 12px 36px;
+      max-width: none;
+    }
+    .page-hero__content h1 {
+      font-size: clamp(1.4rem, 7vw, 1.85rem);
+    }
+  }
+
   /* ==============================
      ALTERNATING BLOCK
   ============================== */
@@ -188,7 +304,7 @@ import CTA from '../components/CTA.astro';
     justify-content: center;
     width: 64px;
     height: 64px;
-    background: rgba(230, 57, 70, 0.08);
+    background: rgba(30, 94, 255, 0.08);
     border-radius: 50%;
     margin-bottom: 1rem;
   }
@@ -237,23 +353,62 @@ import CTA from '../components/CTA.astro';
   }
 
   /* ==============================
-     QUOTE
+     GOAL SECTION
   ============================== */
-  .about-quote {
-    background: linear-gradient(135deg, #1d3557, #457b9d);
-    color: #fff;
+  .about-goal {
+    background: #fff;
+    padding: 90px 0;
+  }
+  .about-goal__inner {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
     text-align: center;
   }
-  .about-quote__inner {
+  .about-goal__label {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+  .about-goal__title {
+    font-size: clamp(34px, 3vw, 46px);
+    font-weight: 700;
+    line-height: 1.25;
+    color: #0f172a;
+    margin-bottom: 32px;
+  }
+  .about-goal__benefits {
     display: flex;
     justify-content: center;
-    max-width: 800px;
+    gap: 48px;
+    flex-wrap: wrap;
   }
-  .about-quote p {
-    font-size: 1.5rem;
-    font-weight: 600;
+  .about-goal__benefit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    max-width: 220px;
+    text-align: center;
+  }
+  .about-goal__benefit svg {
+    flex-shrink: 0;
+    margin-bottom: 4px;
+  }
+  .about-goal__benefit strong {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.3;
+  }
+  .about-goal__benefit span {
+    font-size: 0.88rem;
+    color: #666;
     line-height: 1.4;
-    opacity: .95;
   }
 
   /* ==============================
@@ -288,17 +443,23 @@ import CTA from '../components/CTA.astro';
     .about-values {
       grid-template-columns: 1fr;
     }
-    .about-quote p {
-      font-size: 1.25rem;
+    .about-goal {
+      padding: 60px 0;
+    }
+    .about-goal__benefits {
+      gap: 32px;
+    }
+    .about-goal__benefit {
+      max-width: 100%;
     }
   }
 
   @media (max-width: 480px) {
-    .about-quote p {
-      font-size: 1.1rem;
-    }
     .about-alt__content h2 {
       font-size: 1.4rem;
+    }
+    .about-goal {
+      padding: 50px 0;
     }
   }
 </style>

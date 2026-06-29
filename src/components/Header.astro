@@ -12,8 +12,7 @@ const links = [
   <nav class="site-header__nav" aria-label="Navegación principal">
     <div class="container site-header__inner">
       <a href="/" class="site-header__logo" aria-label="Ir a la página principal">
-        <img src="/images/TCTV.png" alt="" class="site-header__logo-img" />
-        Te Compramos Tu Vehículo
+        <img src="/images/logo.png" alt="Te Compramos Tu Vehículo" class="site-header__logo-img" />
       </a>
       <ul class="site-header__links" id="nav-links">
         {links.map(({ href, label }) => (
@@ -24,10 +23,10 @@ const links = [
           </li>
         ))}
         <li class="site-header__links-cta">
-          <a href="/contacto" class="btn btn-primary site-header__cta-mobile">Hablamos</a>
+          <a href="/contacto#contact-form" class="btn btn-primary site-header__cta-mobile">Hablemos</a>
         </li>
       </ul>
-      <a href="/contacto" class="btn btn-primary site-header__cta">Hablamos</a>
+      <a href="/contacto#contact-form" class="btn btn-primary site-header__cta">Hablemos</a>
       <button class="site-header__hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span>
         <span></span>
@@ -91,7 +90,7 @@ const links = [
   }
 
   .site-header__nav {
-    padding: 1rem 0;
+    padding: 1.25rem 0;
     transition: padding 0.3s ease;
   }
 
@@ -101,29 +100,29 @@ const links = [
   }
 
   .site-header.is-scrolled .site-header__nav {
-    padding: 0.7rem 0;
+    padding: 0.9rem 0;
   }
 
   .site-header__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    max-width: none;
+    margin: 0;
+    padding-left: clamp(2rem, 5vw, 4rem);
+    padding-right: clamp(2rem, 5vw, 4rem);
   }
 
   .site-header__logo {
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 700;
-    font-family: 'Outfit', sans-serif;
-    white-space: nowrap;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
   }
 
   .site-header__logo-img {
-    height: 1.4rem;
-    width: auto;
+    width: 560px;
+    max-width: 560px;
+    height: auto;
+    object-fit: contain;
     display: block;
   }
 
@@ -134,20 +133,20 @@ const links = [
   .site-header__links {
     display: flex;
     list-style: none;
-    gap: 2.25rem;
-    margin: 0 2rem 0 1.5rem;
+    gap: 2.5rem;
+    margin: 0 2rem;
   }
 
   .site-header__links a {
     color: #f1f1f1;
-    font-size: 1.125rem;
+    font-size: 1.2rem;
     font-weight: 500;
     transition: color 0.3s ease;
   }
 
   .site-header__links a:hover,
   .site-header__links a.is-active {
-    color: #e63946;
+    color: var(--color-primary);
     text-decoration: none;
   }
 
@@ -156,16 +155,38 @@ const links = [
   }
 
   .site-header__cta {
-    padding: 12px 28px;
-    font-size: 1rem;
-    font-weight: 600;
+    padding: 12px 34px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    min-width: 150px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
     border-radius: 4px;
     white-space: nowrap;
     flex-shrink: 0;
+    background-color: var(--color-red);
+  }
+
+  .site-header__cta:hover {
+    background-color: var(--color-red-hover);
+    transform: scale(1.05);
   }
 
   .site-header.is-scrolled .site-header__cta {
-    background-color: #b71c1c;
+    background-color: var(--color-red-hover);
+    transform: none;
+  }
+
+  .site-header__cta-mobile {
+    background-color: var(--color-red);
+  }
+
+  .site-header__cta-mobile:hover {
+    background-color: var(--color-red-hover);
+    transform: scale(1.05);
   }
 
   .site-header__hamburger {
@@ -201,6 +222,20 @@ const links = [
 
   .site-header__hamburger[aria-expanded="true"] span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -6px);
+  }
+
+  @media (max-width: 1100px) {
+    .site-header__logo-img {
+      width: 280px;
+      max-width: 280px;
+    }
+    .site-header__links {
+      gap: 1.5rem;
+      margin: 0 1rem;
+    }
+    .site-header__links a {
+      font-size: 1.05rem;
+    }
   }
 
   @media (max-width: 900px) {
@@ -261,6 +296,16 @@ const links = [
 
     .site-header.is-scrolled .site-header__nav {
       padding: 0.6rem 0;
+    }
+
+    .site-header__inner {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .site-header__logo-img {
+      width: 180px;
+      max-width: 180px;
     }
   }
 

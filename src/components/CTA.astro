@@ -4,6 +4,7 @@ export interface Props {
   text?: string;
   label?: string;
   href?: string;
+  className?: string;
 }
 
 const {
@@ -11,6 +12,7 @@ const {
   text = 'Solicita una valoración sin compromiso y descubre cuánto puedes obtener por tu maquinaria o vehículo.',
   label = 'Solicitar valoración',
   href = '/contacto',
+  className = '',
 } = Astro.props;
 ---
 
@@ -18,7 +20,7 @@ const {
   <div class="container cta-section__inner">
     <h2>{heading}</h2>
     <p>{text}</p>
-    <a href={href} class="btn btn-primary">{label}</a>
+    <a href={href} class={["btn btn-primary", className].filter(Boolean).join(" ")}>{label}</a>
   </div>
 </section>
 
@@ -46,5 +48,12 @@ const {
     font-size: 1.1rem;
     max-width: 600px;
     opacity: 0.9;
+  }
+
+  .cta-final-button {
+    background-color: var(--color-red);
+  }
+  .cta-final-button:hover {
+    background-color: var(--color-red-hover);
   }
 </style>
