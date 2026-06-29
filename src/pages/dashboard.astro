@@ -1,0 +1,74 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { verifySessionToken } from '../lib/auth';
+
+const session = Astro.cookies.get('session');
+const autenticado = session && session.value && verifySessionToken(session.value);
+
+if (!autenticado) {
+  return Astro.redirect('/login', 302);
+}
+---
+
+<MainLayout title="Panel de leads — Te Compramos Tu Vehículo" description="Panel de administración para gestionar los leads recibidos.">
+  <section class="page-hero">
+    <div class="container">
+      <h1>Panel de leads</h1>
+      <p>Desde aquí puedes descargar el historial completo de usuarios que han solicitado información a través del formulario de contacto.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container text-center">
+      <p class="dashboard-desc">
+        Los datos se exportan en formato Excel (.xlsx) con toda la información registrada hasta la fecha.
+      </p>
+      <div class="dashboard-actions">
+        <a href="/api/export-leads" class="btn btn-primary dashboard-btn">
+          Descargar historial en Excel
+        </a>
+      </div>
+      <p class="dashboard-logout">
+        <a href="/api/logout">Cerrar sesión</a>
+      </p>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .dashboard-desc {
+    font-size: 1.05rem;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+
+  .dashboard-actions {
+    margin-top: 1rem;
+  }
+
+  .dashboard-btn {
+    padding: 14px 48px;
+    font-size: 1.1rem;
+    background-color: var(--color-red);
+  }
+
+  .dashboard-btn:hover {
+    background-color: var(--color-red-hover);
+  }
+
+  .dashboard-logout {
+    margin-top: 2.5rem;
+    font-size: 0.9rem;
+  }
+
+  .dashboard-logout a {
+    color: #888;
+    text-decoration: underline;
+  }
+
+  .dashboard-logout a:hover {
+    color: var(--color-red);
+  }
+</style>

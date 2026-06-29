@@ -1,0 +1,136 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Iniciar sesión — Te Compramos Tu Vehículo" description="Acceso al panel privado de administración.">
+  <section class="page-hero">
+    <div class="container">
+      <h1>Acceso restringido</h1>
+      <p>Introduce tus credenciales para acceder al panel de administración.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <div class="login-card">
+        <form id="login-form" class="login-form" novalidate>
+          <div class="form-group">
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" name="usuario" required autocomplete="username" />
+          </div>
+          <div class="form-group">
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" name="contrasena" required autocomplete="current-password" />
+          </div>
+          <p id="login-error" class="login-error" aria-live="polite"></p>
+          <button type="submit" class="btn btn-primary login-btn" id="login-btn">Entrar</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<script>
+  const form = document.getElementById('login-form');
+  const errorEl = document.getElementById('login-error');
+  const btn = document.getElementById('login-btn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Entrando…';
+
+    const formData = new FormData(form);
+    const body = JSON.stringify({
+      usuario: formData.get('usuario'),
+      contrasena: formData.get('contrasena'),
+    });
+
+    try {
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body,
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        errorEl.textContent = data.error || 'Error al iniciar sesión.';
+        btn.disabled = false;
+        btn.textContent = 'Entrar';
+        return;
+      }
+
+      window.location.href = '/dashboard';
+    } catch {
+      errorEl.textContent = 'Error de conexión. Inténtalo de nuevo.';
+      btn.disabled = false;
+      btn.textContent = 'Entrar';
+    }
+  });
+</script>
+
+<style>
+  .login-card {
+    max-width: 420px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #1d3557;
+  }
+
+  .form-group input {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-family: inherit;
+  }
+
+  .form-group input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(30, 94, 255, 0.15);
+  }
+
+  .login-error {
+    color: var(--color-red);
+    font-size: 0.9rem;
+    min-height: 1.3em;
+  }
+
+  .login-btn {
+    width: 100%;
+    padding: 0.85rem;
+    font-size: 1.05rem;
+    text-align: center;
+  }
+
+  .login-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+</style>
