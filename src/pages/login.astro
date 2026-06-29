@@ -15,12 +15,12 @@ import MainLayout from '../layouts/MainLayout.astro';
       <div class="login-card">
         <form id="login-form" class="login-form" novalidate>
           <div class="form-group">
-            <label for="usuario">Usuario</label>
-            <input type="text" id="usuario" name="usuario" required autocomplete="username" />
+            <label for="username">Usuario</label>
+            <input type="text" id="username" name="username" required autocomplete="username" />
           </div>
           <div class="form-group">
-            <label for="contrasena">Contraseña</label>
-            <input type="password" id="contrasena" name="contrasena" required autocomplete="current-password" />
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password" />
           </div>
           <p id="login-error" class="login-error" aria-live="polite"></p>
           <button type="submit" class="btn btn-primary login-btn" id="login-btn">Entrar</button>
@@ -43,8 +43,8 @@ import MainLayout from '../layouts/MainLayout.astro';
 
     const formData = new FormData(form);
     const body = JSON.stringify({
-      usuario: formData.get('usuario'),
-      contrasena: formData.get('contrasena'),
+      username: formData.get('username'),
+      password: formData.get('password'),
     });
 
     try {

@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { supabaseAdmin } from '../../lib/supabase';
 import { createSessionToken } from '../../lib/auth';
 
 export const prerender = false;
@@ -6,19 +7,30 @@ export const prerender = false;
 export const POST: APIRoute = async ({ request, cookies }) => {
   try {
     const body = await request.json();
-    const { usuario, contrasena } = body;
+    const { username, password } = body;
 
-    const adminUser = import.meta.env.ADMIN_USER;
-    const adminPassword = import.meta.env.ADMIN_PASSWORD;
-
-    if (!adminUser || !adminPassword) {
+    if (!username || !password) {
       return new Response(
-        JSON.stringify({ error: 'Error de configuración del servidor.' }),
+        JSON.stringify({ error: 'Usuario y contraseña son obligatorios.' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const { data: user, error } = await supabaseAdmin
+      .from('users')
+      .select('username, password')
+      .eq('username', username)
+      .maybeSingle();
+
+    if (error) {
+      console.error('[login] Error al consultar usuarios:', error);
+      return new Response(
+        JSON.stringify({ error: 'Error interno del servidor.' }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
-    if (usuario !== adminUser || contrasena !== adminPassword) {
+    if (!user || user.password !== password) {
       return new Response(
         JSON.stringify({ error: 'Usuario o contraseña incorrectos.' }),
         { status: 401, headers: { 'Content-Type': 'application/json' } }
@@ -39,7 +51,8 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       JSON.stringify({ message: 'Inicio de sesión correcto.' }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
-  } catch {
+  } catch (err) {
+    console.error('[login] Error inesperado:', err);
     return new Response(
       JSON.stringify({ error: 'Error interno del servidor.' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }

@@ -77,13 +77,15 @@ const organizationSchema = {
   <body>
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-    <Header />
+    <div class="page-wrapper">
+      <Header />
 
-    <main id="main-content" tabindex="-1">
-      <slot />
-    </main>
+      <main id="main-content" tabindex="-1">
+        <slot />
+      </main>
 
-    <Footer />
+      <Footer />
+    </div>
 
     <style is:global>
       .skip-link {
@@ -100,6 +102,16 @@ const organizationSchema = {
 
       .skip-link:focus {
         top: 0;
+      }
+
+      .page-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      #main-content {
+        flex: 1;
       }
     </style>
   </body>
